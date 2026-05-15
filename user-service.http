@@ -1,2 +1,46 @@
-## Check the health of the user service
-GET http://localhost:8081/actuator/health
+### 1. Yeni Kullanıcı Oluştur (POST)
+POST http://localhost:8081/api/v1/users
+Content-Type: application/json
+
+{
+  "username": "enes_dj",
+  "email": "enes@beatvault.com",
+  "password": "password123"
+}
+
+### 2. Tüm Kullanıcıları Listele (GET)
+GET http://localhost:8081/api/v1/users
+Accept: application/json
+
+
+### 3. ID ile Kullanıcı Getir (GET)
+GET http://localhost:8081/api/v1/users/1
+
+
+
+### 4. Username ile Kullanıcı Ara (GET)
+GET http://localhost:8081/api/v1/users/username/enes_dj
+
+### 5. Tüm DJ'leri Listele (GET)
+GET http://localhost:8081/api/v1/users/djs
+Accept: application/json
+
+### 6. Kullanıcı Biyografisini Güncelle (PATCH)
+PATCH http://localhost:8081/api/v1/users/1/bio
+Content-Type: application/json
+
+{
+  "bio": "BeatVault'un en iyi DJ'i olmaya geldim! 🎧"
+}
+
+### 7. Kullanıcıyı DJ Rolüne Yükselt (PATCH)
+PATCH http://localhost:8081/api/v1/users/1/promote
+
+### 8. Kullanıcıyı Yasakla (PATCH)
+PATCH http://localhost:8081/api/v1/users/1/ban
+
+### 9. Kullanıcıyı Tekrar Aktif Et (PATCH)
+PATCH http://localhost:8081/api/v1/users/1/activate
+
+### 10. Health Check (Sistem Durumu)
+GET http://localhost:8081/api/v1/actuator/health
