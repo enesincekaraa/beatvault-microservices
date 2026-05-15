@@ -1,0 +1,21 @@
+services:
+  postgres-users:
+    image: postgres:16
+    container_name: beatvault-postgres-users
+    environment:
+      POSTGRES_DB: beatvault_users
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_users_data:/var/lib/postgresql/data
+    networks:
+      - beatvault-network
+
+networks:
+  beatvault-network:
+    driver: bridge
+
+volumes:
+  postgres_users_data:

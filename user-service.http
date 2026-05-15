@@ -1,0 +1,2 @@
+## Check the health of the user service
+GET http://localhost:8081/actuator/health
